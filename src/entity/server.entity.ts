@@ -1,10 +1,10 @@
 import { privileges } from 'src/types/privileges.type';
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { LoginInfo } from './loginInfo.entity';
 
 @Entity()
 export class BackendServer {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
