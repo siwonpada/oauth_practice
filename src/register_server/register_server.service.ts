@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { BackendServer } from 'src/entity/server.entity';
 import { privileges } from 'src/types/privileges.type';
 import { serverPayload } from 'src/types/serverPayload.type';
 import { RegisterServerDto } from './Dto/regiser_server.dto';
@@ -34,5 +35,17 @@ export class RegisterServerService {
       serverName: serverName,
     };
     return this.jwtService.sign(payload);
+  }
+
+  async validateJwt(Jwt: string): Promise<serverPayload | null> {
+    try {
+      return this.jwtService.verify(Jwt);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async validateServer(serverData: serverPayload): Promise<BackendServer> {
+    return this.registerServerRepository.findOnebyId(serverData.serverId);
   }
 }

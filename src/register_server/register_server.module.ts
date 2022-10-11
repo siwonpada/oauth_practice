@@ -16,5 +16,6 @@ import { RegisterServerService } from './register_server.service';
   ],
   controllers: [RegisterServerController],
   providers: [RegisterServerService, RegisterServerRepository],
+  exports: [RegisterServerService],
 })
 export class RegisterServerModule {}

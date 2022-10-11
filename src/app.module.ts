@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { DatabaseConfigModule } from './config/database/config.module';
 import { DatabaseConfigService } from './config/database/config.service';
 import { RegisterServerModule } from './register_server/register_server.module';
+import { OauthModule } from './oauth/oauth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RegisterServerModule } from './register_server/register_server.module';
       useClass: DatabaseConfigService,
       inject: [DatabaseConfigService],
     }),
+    OauthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
